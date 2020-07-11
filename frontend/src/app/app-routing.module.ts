@@ -1,3 +1,4 @@
+import { AddOfferComponent } from './add-offer/add-offer.component';
 import { AddNewsComponent } from './add-news/add-news.component';
 import { ShopeDetailsComponent } from './shope-details/shope-details.component';
 import { AddOwnershipComponent } from './add-ownership/add-ownership.component';
@@ -93,6 +94,10 @@ const routes: Routes = [
   {
     path: 'employee/addnews/:nid',
     component: AddNewsComponent,
+  },
+  {
+    path: 'employee/addoffers',
+    component: AddOfferComponent,
   },
 ];
 

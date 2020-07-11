@@ -15,18 +15,24 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   addNews(news): Observable<any> {
-    // Format Date and time
-    let dateFormat = require('dateformat');
-    let now = new Date();
-    dateFormat(now, 'dddd, mmmm dS, yyyy, h:MM:ss TT');
-    // Form the body of request
     const body = {
       Title: news.Title,
       Desc: news.Desc,
-      admin: 'admin',
-      created_date: now,
     };
     return this.http.post(this.baseurl + '/api/news/new/', body, {
+      headers: this.httpHeaders,
+    });
+  }
+  addOffers(offer): Observable<any> {
+    const body = {
+      Title: offer.Title,
+      Desc: offer.Desc,
+      Cost: offer.Cost,
+      Duration: offer.Duration,
+      minPayment: offer.minPayment,
+      Installement: offer.Installement,
+    };
+    return this.http.post(this.baseurl + '/api/offers/new/', body, {
       headers: this.httpHeaders,
     });
   }

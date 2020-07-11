@@ -103,6 +103,18 @@ class NewsDetailAPIView(RetrieveAPIView):
     queryset = News.objects.all()
     serializer_class = NewsDetailSerializer
 
+
+@api_view(['GET', 'DELETE'])
+def DeleteNewsView(request, pk):
+    request = News.objects.get(id=pk)
+    data = {}
+    operation = request.delete()
+    if operation:
+        data["success"] = "delete successfull"
+    else:
+        data["failure"] = "delete failed"
+    return Response(data=data)
+
 # Offers Section
 
 
@@ -124,6 +136,18 @@ class OffersListAPIView(mixins.CreateModelMixin, ListAPIView):
 class OffersDetailAPIView(RetrieveAPIView):
     queryset = Offer.objects.all()
     serializer_class = OfferDetailSerializer
+
+
+@api_view(['GET', 'DELETE'])
+def DeleteOffersView(request, pk):
+    request = Offer.objects.get(id=pk)
+    data = {}
+    operation = request.delete()
+    if operation:
+        data["success"] = "delete successfull"
+    else:
+        data["failure"] = "delete failed"
+    return Response(data=data)
 
 # Request Section
 

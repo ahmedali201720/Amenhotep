@@ -72,7 +72,7 @@ class Existence(models.Model):
 class Admin(models.Model):
 
     NID = models.CharField(validators=[NID_regex], max_length=14, unique=True)
-    Username = models.CharField(max_length=50, unique=True)
+    Username = models.CharField(max_length=50, unique=True, primary_key=True)
     Password = models.CharField(max_length=20)
     Name = models.CharField(max_length=150)
     Registered = models.DateTimeField(default=timezone.now)
@@ -85,19 +85,17 @@ class Offer(models.Model):
     installment = 'تقسيط'
     cash = 'كاش'
 
-    admin = models.ForeignKey(
-        Admin, on_delete=models.CASCADE, related_name="offer_owner")
     Title = models.CharField(max_length=200)
     Desc = models.TextField(max_length=250)
-    created_date = models.DateTimeField(default=timezone.now)
+    created_date = models.DateTimeField(default=timezone.now, null=True)
     state_choices = [
         (installment, 'تقسيط'),
         (cash, 'كاش')
     ]
     Installement = models.CharField(
         max_length=12, choices=state_choices, default=installment)
-    Cost = models.FloatField(max_length=8)
-    minPayment = models.FloatField(max_length=8, blank=True, null=True)
+    Cost = models.FloatField(max_length=12)
+    minPayment = models.FloatField(max_length=12, blank=True, null=True)
     Duration = models.IntegerField(blank=True, null=True)
     Avatar = models.FileField(upload_to='images', blank=True, null=True)
 
@@ -107,11 +105,9 @@ class Offer(models.Model):
 
 class News(models.Model):
 
-    admin = models.ForeignKey(
-        Admin, on_delete=models.CASCADE, related_name="news_owner")
     Title = models.CharField(max_length=200)
     Desc = models.TextField(max_length=250)
-    created_date = models.DateTimeField(default=timezone.now)
+    created_date = models.DateTimeField(default=timezone.now, null=True)
     Avatar = models.ImageField(upload_to='images', blank=True, null=True)
 
     def __str__(self):

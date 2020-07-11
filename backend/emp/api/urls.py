@@ -5,18 +5,19 @@ app_name = 'news-api'
 urlpatterns = [
     # News Section
     path('news/new/', views.NewsCreateAPIView.as_view(), name='create_news'),
-    path('news/<int:pk>/edit/', views.NewsUpdateAPIView.as_view(), name='edit_news'),
+    path('news/edit/<int:pk>/', views.NewsUpdateAPIView.as_view(), name='edit_news'),
     path('news/', views.NewsListAPIView.as_view(), name='list_news'),
     path('news/<int:pk>/', views.NewsDetailAPIView.as_view(), name='news_details'),
+    path('news/delete/<int:pk>/', views.DeleteNewsView, name='delete_news'),
 
     # Offers Section
     path('offers/new/', views.OffersCreateAPIView.as_view(), name='create_offer'),
-    path('offers/<int:pk>/edit/',
+    path('offers/edit/<int:pk>/',
          views.OffersUpdateAPIView.as_view(), name='edit_offer'),
     path('offers/', views.OffersListAPIView.as_view(), name='list_offers'),
     path('offers/<int:pk>/', views.OffersDetailAPIView.as_view(),
          name='offer_details'),
-    # path('<int:pk>/delete/', views.BookDeleteAPIView.as_view(), name='delete_offer'),
+    path('news/delete/<int:pk>/', views.DeleteOffersView, name='delete_offer'),
 
     # Request Section
     path('requests/new/', views.RequestCreateAPIView.as_view(),

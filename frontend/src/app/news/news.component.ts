@@ -4,18 +4,17 @@ import { ApiService } from '../api/api.service';
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css']
+  styleUrls: ['./news.component.css'],
 })
 export class NewsComponent implements OnInit {
+  news: any;
+  constructor(private api: ApiService) {}
 
-  news : any;
-  constructor(private api : ApiService) { }
-
-  ngOnInit(){
-    this.api.getAllNews().subscribe(data =>{
+  ngOnInit() {
+    this.api.getAllNews().subscribe((data) => {
       this.news = data;
       console.log(this.news);
-    })
+    });
   }
-
+  deleteNews(nid) {}
 }

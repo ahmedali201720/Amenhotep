@@ -23,7 +23,6 @@ class NewsCreateSerializer(ModelSerializer):
     class Meta:
         model = News
         fields = [
-            'admin',
             'Title',
             'Desc',
             'created_date',
@@ -36,7 +35,6 @@ class NewsUpdateSerializer(ModelSerializer):
     class Meta:
         model = News
         fields = [
-            'admin',
             'Title',
             'Desc',
             'created_date',
@@ -50,7 +48,6 @@ class NewsListSerializer(ModelSerializer):
         model = News
         fields = [
             'id',
-            'admin',
             'Title',
             'Desc',
             'created_date',
@@ -63,7 +60,6 @@ class NewsDetailSerializer(ModelSerializer):
         model = News
         fields = [
             'id',
-            'admin',
             'Title',
             'Desc',
             'created_date',
@@ -78,7 +74,6 @@ class OffersCreateSerializer(ModelSerializer):
     class Meta:
         model = Offer
         fields = [
-            'admin',
             'Title',
             'Desc',
             'created_date',
@@ -94,7 +89,6 @@ class OffersUpdateSerializer(ModelSerializer):
     class Meta:
         model = Offer
         fields = [
-            'admin',
             'Title',
             'Desc',
             'created_date',
@@ -111,7 +105,6 @@ class OffersListSerializer(ModelSerializer):
         model = Offer
         fields = [
             'id',
-            'admin',
             'Title',
             'Desc',
             'created_date',
@@ -128,7 +121,6 @@ class OfferDetailSerializer(ModelSerializer):
         model = Offer
         fields = [
             'id',
-            'admin',
             'Title',
             'Desc',
             'created_date',
